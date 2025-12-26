@@ -198,6 +198,7 @@ h1{
 .hidden1{
     color: #35f5f4;}
 .hi{
+    margin-left:4em;
     color: #35f5f4;
     padding-bottom:10px;
 }
@@ -654,18 +655,18 @@ p.subtext {
 .link { color: #6366f1; text-decoration:none; font-weight:600; transition: color .25s ease; }
 .link:hover { color: #a5b4fc; }
 .seeMore{
-    display: block;
-    margin: 20px auto;
-    padding: 10px ;
-    background-color: #001e3e;
-    color: white;
-    border-radius: 7px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 80%;
-}
-.seeMore:hover{
-    transform:scale(1.1);
+        display: block;
+        margin: 20px 1.5rem 20px auto; /* push to the right */
+        padding: 10px;
+        background-color: #001e3e;
+        color: white;
+        border-radius: 7px;
+        font-size: 16px;
+        cursor: pointer;
+        max-width: 160px;
+    }
+    .seeMore:hover{
+        transform: scale(1.1);
 }
 
 /* RESPONSIVE CSS des projets */
@@ -952,18 +953,57 @@ form {
 
 /* 🪄 Responsive : sur petit écran, on empile proprement */
 @media (max-width: 600px) {
-  .container {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
+    .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
 
-  .copyright {
-    text-align: center;
-  }
+    .copyright {
+        text-align: center;
+    }
 }
 
-    
+/* Mobile override: use the site's normal/sans-serif font for typed text and About Me */
+@media (max-width: 768px) {
+    .police, #typedText, .mon-speech {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-size: 1rem;
+    }
+}
+
+</style>
+<style>
+/* About Me collapse on small screens */
+@media (max-width: 768px) {
+    .mon-speech.limited {
+        max-height: 150px; /* roughly 3 lines */
+        overflow: hidden;
+        position: relative;
+        transition: max-height 0.35s ease;
+    }
+
+    .mon-speech.expanded {
+        max-height: 1000px; /* large enough to show all */
+    }
+
+    .about-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: transparent;
+        color: #cc325c;
+        border: 1px solid rgba(204,50,92,0.18);
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.1rem;
+        line-height: 1;
+        padding: 0;
+    }
+    .about-toggle:focus{ outline: none; box-shadow: 0 0 0 3px rgba(204,50,92,0.12); }
+}
 </style>
 <body>
     <header  id="Accueil">
@@ -1008,13 +1048,16 @@ form {
             <div class="mon-image scroll-left  " id="moi">
                 <img src="./Moi/WhatsApp_Image_2025-03-08_at_09.24.03-removebg-preview.png" alt="">
             </div>
-                <p class="mon-speech scroll-right ">Welcome to my world!  I'm Sibli, an aspiring engineer with a passion for new technologies, artificial intelligence, data science, and web development. Curious by nature and eager for challenges, I transform lines of code into interactive experiences, algorithms into intelligent solutions, and ideas into digital realities.
+                <p class="mon-speech scroll-right limited" id="about-text">Welcome to my world!  I'm Sibli, an aspiring engineer with a passion for new technologies, artificial intelligence, data science, and web development. Curious by nature and eager for challenges, I transform lines of code into interactive experiences, algorithms into intelligent solutions, and ideas into digital realities.
     
                     My mission? To design futuristic and intuitive interfaces, develop robust systems, and push innovation ever further. My background in information science and technology (IST) at INPHB allows me to explore the depths of digital technology, from powerful back-end systems to cutting-edge interfaces.
                     
                     Why me? Because I don't just follow technology... I shape it. I am a creator, a thinker, and a builder of interactive experiences. My ambition? To become a Data Scientist & Full Stack Developer, and push the boundaries of what is possible through code.
                     
                     If you're looking for someone who sees beyond pixels and command lines, you've come to the right place. Welcome to my digital world. </p>
+                <div style="text-align:center; margin-top:6px;">
+                    <button id="about-toggle" class="about-toggle" aria-expanded="false">▾</button>
+                </div>
             
         </div>
         <div class="container2">
@@ -1072,15 +1115,15 @@ form {
                 <div class="Img">
                         <img src="./Moi/ux-interface.png" alt="certificate">
                 </div>
-                <p class="edit">WEB DESIGN</p>
-                <p>Your online presence deserves more than just a website: it should tell your story and captivate your audience. Whether it's a sophisticated portfolio to showcase your talent or a powerful showcase site to boost your business, I create modern, intuitive, and aesthetically pleasing interfaces. My goal? To ensure that every visit is an immersive experience that leaves a lasting impression.</p>
+                <p class="edit">APPLICATION DEVELOPMENT</p>
+                <p>I design mobile and desktop applications that turn ideas into useful, elegant experiences. Whether it's an app to simplify users' daily tasks or a robust business solution, I build performant, scalable, and user-centered products. Let's bring your vision to life through thoughtful engineering and clean code.</p>
             </div>
             <div class="digit scroll-right">
                 <div class="Img">
                     <img src="./Moi/IA.png" alt="strategie">
                 </div>
-                <p class="edit">STRATÉGIE DIGITALE</p>
-                <p>Artificial intelligence is not just about algorithms: it is based on understanding, analysis, and creativity. I help companies and project leaders design intelligent solutions that can learn, adapt, and optimize their performance. From creating chatbots to data-driven predictive systems, I develop AI designed to automate without dehumanizing, and innovate without complicating.</p>
+                <p class="edit">AI &amp; DIGITAL STRATEGY</p>
+                <p>I develop practical digital strategies that combine user research, analytics and AI to increase engagement and business value. I also build AI tools chatbots, predictive models and automation pipelines that put those strategies into action and scale with your needs.</p>
             </div>
         </div>
     </section>
@@ -1113,7 +1156,7 @@ form {
                     <span class="tag">Node.js</span>
                     </div>
                     <div class="card-footer">
-                    <a href=""# class="link">View project</a>
+                    <a href="https://vercel.com/kingsssdevs-projects/dashbord-workflow" class="link" target="_blank">View project</a>
                     <span style="color:var(--muted);font-size:0.85rem">2025</span>
                     </div>
                 </div>
@@ -1130,7 +1173,7 @@ form {
                     <span class="tag">javaScript</span>
                     </div>
                     <div class="card-footer">
-                    <a href=""# class="link">View code</a>
+                    <a href="https://github.com/KingSSSdev/Pojet_Porfolio" class="link" target="_blank" >View code</a>
                     <span style="color:var(--muted);font-size:0.85rem">2024</span>
                     </div>
                 </div>
@@ -1296,7 +1339,7 @@ form {
                         <a href="HTTPS://www.LinkedIn.com/in/sibli-salomon-sibli-680b99268/" target="_blank"><img src="./Moi/linkedin-logo.png" alt="" style="width: 40px;"></a>
                         <a href="HTTPS://GitHub.com/KingSSSdev" target="_blank"><img src="./Moi/png-clipart-github-computer-icons-repository-github-white-cat-like-mammal-thumbnail-removebg-preview.png" alt="" style="width: 40px;"></a>
                     </div>
-                <p class="copyright">Tous droits réservés - © 2025</p>
+                <p class="copyright">Tous droits réservés - Sibli Salomon - © 2025</p>
             </div>
         </footer>
         
@@ -1400,5 +1443,49 @@ function changerContenu(section, element) {
     })
       .catch(err => alert("Erreur : " + err));
   }
+
+    // About Me: collapse on mobile with Read more / Read less
+    (function(){
+        const aboutText = document.getElementById('about-text');
+        const aboutToggle = document.getElementById('about-toggle');
+
+        function updateAboutButton(){
+            if(!aboutText || !aboutToggle) return;
+            if(window.innerWidth <= 768){
+                aboutToggle.style.display = 'inline-flex';
+                if(!aboutText.classList.contains('expanded')) aboutText.classList.add('limited');
+                const expanded = aboutText.classList.contains('expanded');
+                aboutToggle.textContent = expanded ? '▴' : '▾';
+                aboutToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            } else {
+                aboutToggle.style.display = 'none';
+                aboutText.classList.remove('limited','expanded');
+            }
+        }
+
+        if(aboutToggle){
+            aboutToggle.addEventListener('click', function(){
+                if(!aboutText) return;
+                const expanded = aboutText.classList.toggle('expanded');
+                if(expanded){
+                    aboutText.classList.remove('limited');
+                    aboutToggle.textContent = '▴';
+                    aboutToggle.setAttribute('aria-expanded','true');
+                } else {
+                    aboutText.classList.add('limited');
+                    aboutToggle.textContent = '▾';
+                    aboutToggle.setAttribute('aria-expanded','false');
+                    // scroll back to paragraph top on collapse
+                    const rect = aboutText.getBoundingClientRect();
+                    window.scrollTo({ top: window.pageYOffset + rect.top - 80, behavior: 'smooth' });
+                }
+            });
+        }
+
+        window.addEventListener('resize', updateAboutButton);
+        window.addEventListener('load', updateAboutButton);
+        // initial call
+        updateAboutButton();
+    })();
 </script>
 </HTML>
