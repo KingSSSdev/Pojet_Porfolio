@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+<HTML lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects - SSS Portfolio</title>
+</head>
+<style>
+    /*==Style globale du site==*/
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(135deg, black 25%, #007BFF 75%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+h1{
+    text-align: center;
+    animation:fadeIn 3s ease-in-out;
+    margin: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    /*==CSS Header ==*/
+    header{
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+    /*Style de la barre de navigation*/
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(135deg, black 5%, #001e3e 95%);
+        padding: 1rem 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        z-index: 1000; 
+    }
+    .navbar-logo {
+        color: #35f5f4;
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: 1px;
+        transition: transform 0.3s;
+    }
+    .navbar-logo:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Bouton retour */
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.7rem 1.5rem;
+        background: linear-gradient(135deg, #cc325c 0%, #8b1f3f 100%);
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(204, 50, 92, 0.3);
+    }
+    
+    .back-button:hover {
+        transform: translateX(-5px);
+        box-shadow: 0 6px 20px rgba(204, 50, 92, 0.5);
+    }
+    
+    .back-button::before {
+        content: '←';
+        font-size: 1.2rem;
+    }
+
+    /* Section principale */
+    .projects-section {
+        margin-top: 120px;
+        padding: 20px;
+    }
+    
+    .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .section-header h1 {
+        color: #35f5f4;
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .section-header p {
+        color: #94a3b8;
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Grid des projets */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 1400px;
+    }
+    
+    .card {
+        background: #001e3e;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.06);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeInUp 0.6s ease-out backwards;
+    }
+    
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+    .card:nth-child(8) { animation-delay: 0.8s; }
+    .card:nth-child(9) { animation-delay: 0.9s; }
+    .card:nth-child(10) { animation-delay: 1s; }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+    
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    
+    .card-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem; 
+    }
+    
+    .card-content h3 { 
+        font-size: 1.3rem;
+        color: #fff; 
+        margin-bottom: 0.5rem;
+    }
+    
+    .card-content p { 
+        color: #94a3b8; 
+        font-size: 0.95rem; 
+        line-height: 1.6; 
+    }
+    
+    .tags { 
+        display:flex;
+        flex-wrap:wrap; 
+        gap:.5rem;
+        margin-top:.5rem; 
+    }
+    
+    .tag {
+        background: rgba(255,255,255,0.06);
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        color: #94a3b8;
+    }
+    
+    .card-footer {
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        padding-top:0.8rem;
+        margin-top:1rem;
+    }
+    
+    .link { 
+        color: #6366f1;
+        text-decoration:none;
+        font-weight:600;
+        transition: color .25s ease;
+    }
+    
+    .link:hover { 
+        color: #a5b4fc;
+    }
+    
+    .status-badge {
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+    
+    .status-completed {
+        background: rgba(34, 197, 94, 0.1);
+        color: #22c55e;
+    }
+    
+    .status-progress {
+        background: rgba(251, 191, 36, 0.1);
+        color: #fbbf24;
+    }
+    
+    .status-prototype {
+        background: rgba(139, 92, 246, 0.1);
+        color: #8b5cf6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .section-header h1 {
+            font-size: 2.5rem;
+        }
+        
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 15px;
+        }
+        
+        .navbar {
+            padding: 1rem;
+        }
+        
+        .navbar-logo {
+            font-size: 1.4rem;
+        }
+        
+        .back-button {
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">SSS_portfolio</a>
+        <a href="index.html" class="back-button">Back to Home</a>
+    </nav>
+
+    <!-- Section Projets -->
+    <section class="projects-section">
+        <div class="section-header">
+            <h1>All My Projects</h1>
+            <p>Explore my complete portfolio of web development, mobile apps, AI solutions, and data science projects</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Projet 1 - Interactive Dashboard -->
+            <article class="card">
+                <img src="./Moi/Data center dashboard.jpeg" alt="Interactive Dashboard">
+                <div class="card-content">
+                    <h3>Interactive Dashboard</h3>
+                    <p>A dynamic dashboard that allows you to view data in real time with elegant graphics and responsive design.</p>
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Chart.js</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://vercel.com/kingsssdevs-projects/dashbord-workflow" class="link" target="_blank">View Project</a>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Projet 2 - 3D Portfolio -->
+            <article class="card">
+                <img src="./Moi/Graphic Design Portfolio Projects __ Photos, videos, logos, illustrations and branding.jpeg" alt="3D Portfolio">
+                <div class="card-content">
+                    <h3>3D Portfolio</h3>
+                    <p>An immersive portfolio with 3D effects and smooth interactions to showcase my creations with modern animations.</p>
+                    <div class="tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/KingSSSdev/Pojet_Porfolio" class="link" target="_blank">View Code</a>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Projet 3 - AI Chatbot -->
+            <article class="card">
+                <img src="./Moi/How to Delete ChatGPT History (Full Guide).jpg" alt="AI Chatbot">
+                <div class="card-content">
+                    <h3>AI Chatbot</h3>
+                    <p>An intelligent conversational assistant that can help developers solve their coding problems using NLP.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">TensorFlow</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="link">Details</a>
+                        <span class="status-badge status-prototype">Prototype</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop" alt="E-Commerce Platform">
+                <div class="card-content">
+                    <h3>E-Commerce Platform</h3>
+                    <p>A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard.</p>
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Stripe</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="link">View Project</a>
+                        <span class="status-badge status-progress">In Progress</span>
+                    </div>
+                </div>
+            </article>
+
+            <!--
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=600&h=400&fit=crop" alt="Weather App">
+                <div class="card-content">
+                    <h3>Weather Forecast App</h3>
+                    <p>A beautiful weather application with real-time forecasts, location detection, and 7-day predictions.</p>
+                    <div class="tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">API Integration</span>
+                        <span class="tag">Geolocation</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="link">View Project</a>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                </div>
+            </article>
+
+            
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop" alt="Task Manager">
+                <div class="card-content">
+                    <h3>Task Management System</h3>
+                    <p>A collaborative task manager with team features, deadline tracking, and progress visualization.</p>
+                    <div class="tags">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="link">View Project</a>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                </div>
+            </article>
+
+            
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Data Visualization">
+                <div class="card-content">
+                    <h3>Data Visualization Tool</h3>
+                    <p>An interactive data visualization platform for analyzing complex datasets with custom charts and filters.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Plotly</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">Dash</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="link">View Project</a>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop" alt="Social Media">
+                <div class="card-content">
+                    <h3>Social Media Clone</h3>
+                    <p>A full-featured social network with posts, comments, likes, real-time notifications, and user profiles.</p>
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">Material-UI</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="link">View Project</a>
+                        <span class="status-badge status-progress">In Progress</span>
+                    </div>
+                </div>
+            </article>
+
+            
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop" alt="ML Model">
+                <div class="card-content">
+                    <h3>Image Classification ML Model</h3>
+                    <p>A deep learning model for image classification with 95% accuracy using convolutional neural networks.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Keras</span>
+                        <span class="tag">CNN</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="link">View Project</a>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                </div>
+            </article>
+
+            
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop" alt="Fitness App">
+                <div class="card-content">
+                    <h3>Mobile Fitness Tracker</h3>
+                    <p>A comprehensive fitness app with workout tracking, nutrition planning, and progress analytics.</p>
+                    <div class="tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Dart</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">HealthKit</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="link">View Project</a>
+                        <span class="status-badge status-prototype">Prototype</span>
+                    </div>
+                </div>
+            </article>
+        -->
+        </div>
+    </section>
+</body>
+</HTML>
